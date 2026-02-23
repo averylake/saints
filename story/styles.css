@@ -1,0 +1,723 @@
+/* ============================================
+   THE SAINTS: RESISTANCE IN LIGHT
+   saints.averylakeofficial.com
+   Mobile-first, dark theme, tap-through narrative
+   ============================================ */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #0a0a0c;
+    --color-bg-subtle: #111114;
+    --color-lavender: #c4b5d4;
+    --color-lavender-bright: #d8c9e8;
+    --color-lavender-dim: #8a7a9e;
+    --color-text: #e8e4ec;
+    --color-text-dim: #9a96a0;
+    --color-text-whisper: #6d6874;
+    --color-red: #c43030;
+    --color-red-bright: #e04040;
+    --color-white: #f0edf4;
+    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    --transition-fade: 0.8s ease;
+    --transition-slow: 1.2s ease;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    overflow: hidden;
+    height: 100dvh;
+    height: 100vh;
+    /* fallback */
+    width: 100vw;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --- Progress Bar --- */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--color-lavender);
+    width: 10%;
+    z-index: 100;
+    transition: width 0.5s ease;
+    opacity: 0.6;
+}
+
+/* --- Navigation Hint --- */
+.nav-hint {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-whisper);
+    z-index: 90;
+    animation: pulse 2.5s ease-in-out infinite;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.nav-hint-text {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.nav-hint-arrow {
+    animation: bob 2s ease-in-out infinite;
+}
+
+.nav-hint.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes bob {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+/* --- Beat Sections --- */
+.beat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    height: 100vh;
+    /* fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--transition-fade), visibility var(--transition-fade);
+    z-index: 0;
+    padding: 1.5rem;
+}
+
+.beat.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.beat-content {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Text Styles --- */
+.text-whisper {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--color-text-whisper);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.text-main {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-top: 0.3rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.text-disruption {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-red);
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.text-resolution {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-lavender-bright);
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.text-question {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-lavender);
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+/* Animation delays */
+.delay-1 {
+    animation-delay: 0.4s;
+}
+
+.delay-2 {
+    animation-delay: 0.8s;
+}
+
+.delay-3 {
+    animation-delay: 1.2s;
+}
+
+.delay-4 {
+    animation-delay: 1.6s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Saint Beats --- */
+.saint-beat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.saint-image-container {
+    width: 90%;
+    max-width: 380px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.2s forwards;
+}
+
+.saint-image {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    filter: brightness(0.95);
+}
+
+.saint-text {
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.saint-quote {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-lavender-bright);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+}
+
+.saint-name {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-lavender-dim);
+    margin-bottom: 0.75rem;
+}
+
+.saint-story {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--color-text-dim);
+    line-height: 1.7;
+}
+
+/* --- Chaplin Speech Link --- */
+.video-container {
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+}
+
+.speech-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-lavender-dim);
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(196, 181, 212, 0.2);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.speech-link:hover,
+.speech-link:active {
+    color: var(--color-lavender-bright);
+    border-color: var(--color-lavender);
+    background: rgba(196, 181, 212, 0.05);
+}
+
+.speech-icon {
+    flex-shrink: 0;
+}
+
+/* --- Seducer Beat --- */
+.seducer-beat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.seducer-image-container {
+    width: 70%;
+    max-width: 280px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.2s forwards;
+}
+
+.seducer-image {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.seducer-text {
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.seducer-line {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--color-red);
+    line-height: 1.4;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+}
+
+/* --- Temptation Beat --- */
+.temptation-beat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.clown-grid {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.clown-image {
+    width: 30%;
+    max-width: 130px;
+    height: auto;
+    border-radius: 2px;
+    filter: brightness(0.7) saturate(0.8);
+    opacity: 0.75;
+}
+
+/* --- Refusal Beat --- */
+.refusal-beat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.refusal-image-container {
+    position: relative;
+    width: 65%;
+    max-width: 260px;
+}
+
+.refusal-before {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.refusal-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: slashIn 0.8s ease 1s forwards;
+}
+
+.refusal-text {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-white);
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.4s forwards;
+}
+
+@keyframes slashIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Resolution / Triptych --- */
+.triptych-container {
+    width: 95%;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.2s forwards;
+}
+
+.triptych-image {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+/* --- Close Beat --- */
+.close-beat {
+    padding-bottom: 4rem;
+}
+
+.close-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.close-link {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-lavender-dim);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-lavender-dim);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+}
+
+.close-link:hover,
+.close-link:active {
+    color: var(--color-lavender-bright);
+    border-color: var(--color-lavender-bright);
+    background: rgba(196, 181, 212, 0.05);
+}
+
+.restart-btn {
+    margin-top: 0.5rem;
+    border-color: rgba(196, 181, 212, 0.3);
+    color: var(--color-text-whisper);
+}
+
+.restart-btn:hover,
+.restart-btn:active {
+    color: var(--color-lavender);
+    border-color: var(--color-lavender-dim);
+}
+
+/* --- Reference Section --- */
+.reference-section {
+    border-top: 1px solid rgba(196, 181, 212, 0.15);
+    padding-top: 2.5rem;
+    margin-top: 1rem;
+    text-align: left;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+}
+
+.reference-title {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-lavender-dim);
+    margin-bottom: 1.5rem;
+}
+
+.reference-card {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(196, 181, 212, 0.08);
+}
+
+.reference-card:last-of-type {
+    border-bottom: none;
+}
+
+.reference-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--color-lavender-bright);
+    margin-bottom: 0.2rem;
+}
+
+.reference-dates {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--color-text-whisper);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+}
+
+.reference-card p {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--color-text-dim);
+    line-height: 1.7;
+}
+
+.reference-divider {
+    height: 1px;
+    background: rgba(196, 181, 212, 0.1);
+    margin: 2rem 0;
+}
+
+.reference-meta {
+    text-align: center;
+}
+
+.reference-meta p {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    line-height: 1.8;
+}
+
+.reference-links {
+    margin-top: 0.5rem;
+}
+
+.reference-links a {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-lavender-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.reference-links a:hover {
+    color: var(--color-lavender-bright);
+}
+
+.link-sep {
+    color: var(--color-text-whisper);
+    margin: 0 0.5rem;
+}
+
+.reference-festival {
+    margin-top: 1rem !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em;
+    color: var(--color-text-whisper) !important;
+}
+
+.reference-festival a {
+    color: var(--color-text-whisper);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.reference-festival a:hover {
+    color: var(--color-lavender-dim);
+}
+
+/* --- Responsive: Tablet --- */
+@media (min-width: 768px) {
+    .beat-content {
+        max-width: 560px;
+    }
+
+    .text-main {
+        font-size: 1.5rem;
+    }
+
+    .text-resolution {
+        font-size: 1.8rem;
+    }
+
+    .text-question {
+        font-size: 2.2rem;
+    }
+
+    .saint-quote {
+        font-size: 1.6rem;
+    }
+
+    .saint-image-container {
+        max-width: 420px;
+    }
+
+    .seducer-image-container {
+        max-width: 320px;
+    }
+
+    .clown-image {
+        max-width: 150px;
+    }
+}
+
+/* --- Responsive: Desktop --- */
+@media (min-width: 1200px) {
+    .beat-content {
+        max-width: 700px;
+    }
+
+    .saint-beat {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+    }
+
+    .saint-image-container {
+        width: 45%;
+        max-width: 320px;
+    }
+
+    .saint-text {
+        flex: 1;
+    }
+
+    /* Chaplin beat: keep video button in the text column, not as a third flex child */
+    .chaplin-beat {
+        flex-wrap: wrap;
+    }
+
+    .chaplin-beat .video-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+        padding-left: calc(45% + 3rem);
+    }
+
+    .chaplin-beat .speech-link {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .chaplin-beat .speech-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* --- Last beat scrollable --- */
+#beat-10.active {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    align-items: flex-start;
+    padding-top: 4rem;
+}

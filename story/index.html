@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Saints: Resistance in Light — Avery Lake</title>
+    <meta name="description"
+        content="Three new saints have been canonized. They are on their way to help you, with their timeless message. A digital experience by Avery Lake.">
+    <meta name="theme-color" content="#0a0a0c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/webp" href="assets/triptych.webp">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Saints: Resistance in Light">
+    <meta property="og:description"
+        content="Three new saints have been canonized. They are on their way to help you, with their timeless message.">
+    <meta property="og:image" content="https://saints.averylakeofficial.com/assets/og-image.png">
+    <meta property="og:url" content="https://saints.averylakeofficial.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Saints: Resistance in Light">
+    <meta name="twitter:description"
+        content="Three new saints have been canonized. They are on their way to help you, with their timeless message.">
+    <meta name="twitter:image" content="https://saints.averylakeofficial.com/assets/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Progress indicator -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation hint -->
+    <div class="nav-hint" id="navHint">
+        <span class="nav-hint-text">Tap to continue</span>
+        <svg class="nav-hint-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3L8 13M8 13L13 8M8 13L3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <!-- Beat 1: Opening -->
+    <section class="beat active" id="beat-1" data-beat="1">
+        <div class="beat-content">
+            <p class="text-whisper">In these disoriented times,</p>
+            <p class="text-whisper delay-1">three new saints have been canonized.</p>
+            <p class="text-main delay-2">They are on their way to help you,</p>
+            <p class="text-main delay-3">with their timeless message.</p>
+        </div>
+    </section>
+
+    <!-- Beat 2: St. Sophie Scholl -->
+    <section class="beat" id="beat-2" data-beat="2">
+        <div class="beat-content saint-beat">
+            <div class="saint-image-container">
+                <img src="assets/sophie.webp" alt="St. Sophie Scholl by Avery Lake" class="saint-image" loading="lazy">
+            </div>
+            <div class="saint-text">
+                <p class="saint-quote">"The sun still shines"</p>
+                <p class="saint-name">St. Sophie Scholl</p>
+                <p class="saint-story">She was executed by the Nazis at 21 for distributing leaflets. Her quiet defiance
+                    became an inspiration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beat 3: St. George Orwell -->
+    <section class="beat" id="beat-3" data-beat="3">
+        <div class="beat-content saint-beat">
+            <div class="saint-image-container">
+                <img src="assets/orwell.webp" alt="St. George Orwell by Avery Lake" class="saint-image" loading="lazy">
+            </div>
+            <div class="saint-text">
+                <p class="saint-quote">"Be present. Control is fear"</p>
+                <p class="saint-name">St. George Orwell</p>
+                <p class="saint-story">He wrote <em>1984</em> to expose the architecture of control. His words seem more
+                    important today than ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beat 4: St. Charlie Chaplin -->
+    <section class="beat" id="beat-4" data-beat="4">
+        <div class="beat-content saint-beat chaplin-beat">
+            <div class="saint-image-container">
+                <img src="assets/chaplin.webp" alt="St. Charlie Chaplin by Avery Lake" class="saint-image"
+                    loading="lazy">
+            </div>
+            <div class="saint-text">
+                <p class="saint-quote">Final speech from <em>The Great Dictator</em></p>
+                <p class="saint-name">St. Charlie Chaplin</p>
+                <p class="saint-story">An artist who built worlds without words. In this moment, he breaks his silence
+                    to confront tyranny.</p>
+            </div>
+            <div class="video-container" id="videoContainer">
+                <a href="https://youtu.be/J7GY1Xg6X20" target="_blank" rel="noopener" class="speech-link">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="speech-icon">
+                        <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1" />
+                        <polygon points="13,10 23,16 13,22" fill="currentColor" />
+                    </svg>
+                    <span>Listen to his words</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beat 5: The Shift -->
+    <section class="beat" id="beat-5" data-beat="5">
+        <div class="beat-content">
+            <p class="text-main">The triptych was complete.</p>
+            <p class="text-main delay-1">The saints had spoken.</p>
+            <p class="text-whisper delay-2">But then...</p>
+            <p class="text-disruption delay-3">an unexpected figure appeared.</p>
+        </div>
+    </section>
+
+    <!-- Beat 6: The Seducer Appears -->
+    <section class="beat" id="beat-6" data-beat="6">
+        <div class="beat-content seducer-beat">
+            <div class="seducer-image-container">
+                <img src="assets/seducer.png" alt="The Seducer by Avery Lake" class="seducer-image" loading="lazy">
+            </div>
+            <div class="seducer-text">
+                <p class="seducer-line">"We want you</p>
+                <p class="seducer-line delay-1">to become a Saint"</p>
+                <p class="text-whisper delay-2">The message sounded plausible. Even kind.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beat 7: The Temptation -->
+    <section class="beat" id="beat-7" data-beat="7">
+        <div class="beat-content temptation-beat">
+            <p class="text-disruption">The Seducer wanted to be the center.</p>
+            <p class="text-disruption delay-1">To make a mockery of the Saints.</p>
+            <p class="text-disruption delay-2">To clone them into clowns.</p>
+            <div class="clown-grid delay-3">
+                <img src="assets/clown-sophie.png" alt="Sophie as clown" class="clown-image" loading="lazy">
+                <img src="assets/clown-orwell.png" alt="Orwell as clown" class="clown-image" loading="lazy">
+                <img src="assets/clown-chaplin.png" alt="Chaplin as clown" class="clown-image" loading="lazy">
+            </div>
+            <p class="text-main delay-4">A theatrical temptation.</p>
+        </div>
+    </section>
+
+    <!-- Beat 8: The Refusal -->
+    <section class="beat" id="beat-8" data-beat="8">
+        <div class="beat-content refusal-beat">
+            <div class="refusal-image-container">
+                <img src="assets/seducer.png" alt="The Seducer" class="seducer-image refusal-before" loading="lazy">
+                <img src="assets/seducer-crossed.png" alt="The Seducer Crossed Out" class="seducer-image refusal-after"
+                    loading="lazy">
+            </div>
+            <p class="refusal-text">The Saints won't become clowns.</p>
+            <p class="text-whisper delay-1">The Saints were free.</p>
+            <p class="text-whisper delay-2">The Seducer has a price.</p>
+        </div>
+    </section>
+
+    <!-- Beat 9: Resolution -->
+    <section class="beat" id="beat-9" data-beat="9">
+        <div class="beat-content">
+            <div class="triptych-container">
+                <img src="assets/triptych.webp" alt="The Saints Triptych by Avery Lake" class="triptych-image"
+                    loading="lazy">
+            </div>
+            <p class="text-resolution">You don't need to become a saint.</p>
+            <p class="text-resolution delay-1">You already are one.</p>
+            <p class="text-whisper delay-2">Remember?</p>
+        </div>
+    </section>
+
+    <!-- Beat 10: Close -->
+    <section class="beat" id="beat-10" data-beat="10">
+        <div class="beat-content close-beat">
+            <p class="text-question">What will you resist?</p>
+            <div class="close-links">
+                <a href="https://gallery.averylakeofficial.com/collections/the-saints-the-seducer" target="_blank"
+                    rel="noopener" class="close-link">View the collection</a>
+                <a href="https://gallery.averylakeofficial.com/products/the-saints-timeless-triptych" target="_blank"
+                    rel="noopener" class="close-link">Free download</a>
+                <button class="close-link restart-btn" id="restartBtn">Begin again</button>
+            </div>
+
+            <!-- Reference Section -->
+            <div class="reference-section">
+                <h2 class="reference-title">The Saints</h2>
+
+                <div class="reference-card">
+                    <h3>Sophie Scholl</h3>
+                    <p class="reference-dates">1921 — 1943</p>
+                    <p>Member of the White Rose resistance group in Munich. She distributed leaflets denouncing the Nazi
+                        regime. Arrested, tried, and executed at age 21. Her last words: "Die Sonne scheint noch" — The
+                        sun still shines.</p>
+                </div>
+
+                <div class="reference-card">
+                    <h3>George Orwell</h3>
+                    <p class="reference-dates">1903 — 1950</p>
+                    <p>Born Eric Arthur Blair. Author of <em>Nineteen Eighty-Four</em> and <em>Animal Farm</em>. Fought
+                        fascism in the Spanish Civil War. His writing exposed the architecture of surveillance,
+                        propaganda, and control. "In a time of deceit, telling the truth is a revolutionary act."</p>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Charlie Chaplin</h3>
+                    <p class="reference-dates">1889 — 1977</p>
+                    <p>An artist who built worlds without words. In <em>The Great Dictator</em> (1940), he broke his
+                        silence. His final speech is a plea for humanity, delivered in character as a Jewish barber
+                        mistaken for the dictator. It remains one of the most powerful monologues in cinema.</p>
+                </div>
+
+                <div class="reference-card">
+                    <h3>The Seducer</h3>
+                    <p class="reference-dates">Temporary Trick</p>
+                    <p>We were tempted to add more to the triptych. The message of the Seducer sounded plausible. Even
+                        kind. But the triptych was already complete. The Seducer wanted to be the center, to clone the
+                        Saints into clowns, into a theatrical temptation. A spectacle that had to be stopped.</p>
+                    <p style="margin-top: 0.5rem;">This is a single, unique, signed edition. It comes with one
+                        condition: to complete the piece, you must destroy it. The Saints are free.
+                        <a href="https://gallery.averylakeofficial.com/products/the-seducer-temporary-trick"
+                            target="_blank" rel="noopener" style="color: var(--color-lavender-dim);">The Seducer asks
+                            for a high price.</a>
+                    </p>
+                </div>
+
+                <div class="reference-divider"></div>
+
+                <div class="reference-meta">
+                    <p><em>The Saints: Resistance in Light</em></p>
+                    <p>A work by <a href="https://averylakeofficial.com" target="_blank" rel="noopener">Avery Lake</a>
+                    </p>
+                    <p class="reference-links">
+                        <a href="https://gallery.averylakeofficial.com/collections/the-saints-the-seducer"
+                            target="_blank" rel="noopener">Gallery</a>
+                        <span class="link-sep">·</span>
+                        <a href="https://averylakeofficial.substack.com" target="_blank" rel="noopener">Writing</a>
+                        <span class="link-sep">·</span>
+                        <a href="https://gallery.averylakeofficial.com/pages/manifesto-art-in-the-intelligence-age"
+                            target="_blank" rel="noopener">Manifesto</a>
+                    </p>
+                    <p class="reference-festival">Presented at <a href="https://artsrevelstoke.com" target="_blank"
+                            rel="noopener">LUNA Arts 2026</a>, Revelstoke, BC</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
